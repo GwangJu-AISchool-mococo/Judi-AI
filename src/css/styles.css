@@ -1,0 +1,130 @@
+.chat-container {
+    width: 400px;
+    margin: auto;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #chatbox {
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 5px;
+    background: #fff;
+    border: 1px solid #ddd;
+  }
+  
+  #userInput {
+    width: calc(100% - 60px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-right: -1px; /* 버튼과 정확히 맞추기 위함 */
+  }
+  
+  button {
+    width: 60px;
+    border: none;
+    padding: 10px;
+    background: #5cb85c;
+    color: white;
+  }
+  
+  /* 말풍선 스타일 */
+  .bubble {
+    padding: 10px 15px;
+    border-radius: 20px;
+    background: #e0e0e0;
+    display: inline-block;
+    margin: 5px;
+  }
+  
+  /* 변호사 말풍선 */
+  .lawyer {
+    text-align: left;
+  }
+  
+  /* 사용자 말풍선 */
+  .user {
+    text-align: right;
+  }
+  
+  .bubble + .bubble {
+    margin-top: 10px;
+  }
+  
+/* 기존 스타일 이후 추가 */
+.lawyer-image-container {
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .lawyer-image {
+    max-width: 100%;
+    height: auto;
+    display: inline-block; /* 이미지를 가운데 정렬하기 위해 */
+  }
+  
+  .lawyer-bubble {
+    position: absolute;
+    top: 20px; /* 이미지 상단으로부터의 위치, 조정이 필요할 수 있습니다 */
+    left: 50%;
+    transform: translateX(-50%); /* 말풍선을 이미지의 중앙으로 정렬 */
+    white-space: nowrap; /* 말풍선의 텍스트가 줄바꿈 되지 않도록 */
+  }
+
+/* 기존 스타일 이후 추가 */
+.hidden {
+    display: none;
+  }
+  
+  .fade-in {
+    animation: fadeIn 2s;
+  }
+
+  .fade-out {
+    animation: fadeOut 2s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  .chat-interface {
+    position: relative;
+  }
+  
+  #chatbox {
+    position: fixed; /* 고정된 위치에 두려면 fixed 사용 */
+    bottom: -100%; /* 초기에는 화면 아래로 숨겨져 있어야 함 */
+    /* right: 0; 오른쪽 정렬 */
+    width: 400px; /* 적절한 너비 설정 */
+    transition: bottom 1s; /* 아래에서 올라오는 애니메이션 효과 */
+    background-color: white; /* 채팅박스 배경색 설정 */
+    border: 1px solid #ddd; /* 테두리 추가 */
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
+  }
+  
+  #chatbox.active {
+    bottom: 0; /* 활성화 상태에서는 바닥에 붙음 */
+  }
+  
+  #open-chatbox-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+    /* 아이콘의 크기에 따라 width와 height를 조정해야 할 수도 있습니다. */
+  }
+  

@@ -1,10 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate} from 'react-router-dom';
 import './css/reset.css';
 import './css/bottom.css';
 import './css/top.css';
 import './css/center copy.css';
+import './css/styles.css';
+
 
 
 
@@ -94,29 +96,93 @@ function Home() {
 }
 
 function TryJudiAI() {
+  function toggleChatbox() {
+    var chatbox = document.getElementById("chatbox");
+    chatbox.classList.toggle("active");
+    if(chatbox.classList.contains("active")){
+      chatbox.classList.remove("hidden"); // 숨김 해제
+    }else{
+      setTimeout(function(){ chatbox.classList.add("hidden"); }, 500); // 애니메이션 후 숨김
+    }
+  }
+  function submitResponse() {
+    var input = document.getElementById("userInput");
+    var userText = input.value.trim();
+  
+    if(userText !== "") {
+      // 사용자의 응답을 화면에 표시
+      var userBubble = document.createElement("div");
+      userBubble.textContent = userText;
+      userBubble.classList.add("bubble", "user");
+      document.getElementById("chatbox").appendChild(userBubble);
+  
+      // 말풍선 스크롤을 맨 아래로
+      var chatbox = document.getElementById("chatbox");
+      chatbox.scrollTop = chatbox.scrollHeight;
+  
+      input.value = ""; // 입력 필드 초기화
+  
+      // 여기에 변호사의 답변 로직을 구현하실 수 있습니다.
+      // 예를 들면, setTimeout과 함께 미리 정의된 답변을 사용하거나,
+      // 더 복잡한 로직으로 서버에 요청을 보내고 응답을 받을 수도 있습니다.
+    }
+  }
+  // 초기 질문 로딩
+  useEffect(() => {
+    const lawyerBubble = document.createElement("div");
+    lawyerBubble.textContent = "안녕하세요, 어떤 도움이 필요하신가요?";
+    lawyerBubble.classList.add("bubble", "lawyer");
+    document.getElementById("chatbox").appendChild(lawyerBubble);
+  }, []);
+  // React 코드는 JSX 형식으로 작성되며, HTML과 유사하게 보입니다.
   const navigate = useNavigate();
   return (
     <div>
-       {/* Top */}
-       <div className="top">
+      {/* Top */}
+      <div className="top">
         <div className="logo" onClick={() => navigate('/')}>
           <p>JudiAI</p>
         </div>
 
         <div className="navigation_bar">
-
           <ul>
             <li><Link to="/">HOME</Link></li>
             <li><Link to="/try-judiai">Try JudiAI</Link></li>
-            <li><a href = "#a">Our Clients</a></li>
-            <li><a href = "#b">Contact us</a></li>
-            <li><a href = "#c">메뉴 3</a></li>
+            <li><a href="#a">Our Clients</a></li>
+            <li><a href="#b">Contact us</a></li>
           </ul>
+        </div>
+      </div>
+
+      {/* Chat Simulator */}
+      <div className="chat-container">
+        <div className="lawyer-image-container" onClick={toggleChatbox}>
+          <img
+            className="lawyer-image"
+            src="/images/Judi_desk.png" // 이미지 경로를 업데이트하세요
+            alt="변호사"
+          />
+          <div className="bubble lawyer-bubble hidden">
+            안녕하세요, 어떤 도움이 필요하신가요?
+          </div>
+        </div>
+
+        <div id="chatbox" className="hidden">
+          <input type="text" id="userInput" placeholder="여기에 답변을 입력하세요..." />
+          <button onClick={submitResponse}>전송</button>
+        </div>
+
+        <div id="open-chatbox-button">
+          <img
+            src="/images/chat_icon.png" // 이미지 경로를 업데이트하세요
+            alt="Chat Icon"
+          />
         </div>
       </div>
     </div>
   );
 }
+
 
 function App() {
   return (
@@ -130,3 +196,5 @@ function App() {
 }
 
 export default App;
+
+
