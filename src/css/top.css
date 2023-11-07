@@ -1,0 +1,118 @@
+
+
+.top {
+    width: 100%;
+    margin: 1% auto; /* 가로 가운데 정렬을 위한 코드 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+
+    .logo {
+        color: var(--point-color);
+        padding: 1%;
+        padding-left:3em;
+        font-size: 1.8em;
+        font-weight: bold;
+        cursor: pointer;
+        display: inline-block; /* 로고를 인라인 블록으로 설정 */
+    }
+
+    .navigation_bar {
+        display: inline-block; /* 네비게이션 바를 인라인 블록으로 설정 */
+        padding-right:3em;
+    }
+        ul {
+            list-style: none;
+            
+            padding: 0;
+            margin:0;
+            text-align:right;
+            white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+        }
+        
+
+        li {
+            display: inline-block;
+            margin-left: 0; /* 목록 항목 간의 간격을 조정할 수 있습니다. */
+            /* margin-right: 30px; */
+            
+        }
+
+        li a {
+            text-decoration: none; /* 밑줄 제거 */
+            
+            font-size: 120%;
+            color: #000000ac; /* 텍스트 색상 */
+            padding: 0.5vh 2vh; /* 내부 간격 */
+            border-radius: 10px;
+            margin: 1vh; /* 메뉴 아이템 간 간격 */
+            transition: background-color 0.3s; /* 배경 색상 변화에 애니메이션 추가 */
+        }
+        
+        /* 메뉴 아이템에 호버(마우스를 올렸을 때) 스타일 */
+        li a:hover {
+            background-color: rgba(194, 194, 194, 0.314); /* 호버시 배경 색상 변경 */
+            color: #000000; /* 호버시 텍스트 색상 변경 */
+            /* font-weight: bold; 글꼴 굵기 */
+        }
+
+
+
+.menu-toggle-background{
+    display: flex;
+    width: 100%; 
+}
+  /* 메뉴 토글 아이콘 스타일 */
+  .menu-toggle {
+    cursor: pointer;
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    background-color: transparent;
+    border: 1px solid transparent;
+
+
+    /* 다른 아이콘 스타일을 적용하려면 이 부분에 아이콘 스타일을 추가합니다. */
+  }
+  
+  /* 화면 크기가 작을 때 드롭다운 메뉴 스타일 */
+  .navigation_bar.dropdown ul {
+    display: none;
+  }
+  
+
+/* 화면 크기가 큰 경우 메뉴 토글 아이콘 숨기기 */
+    @media (min-width: 769px) {
+        .menu-toggle {
+        display: none;
+        }
+    }
+
+  
+    .menu-toggle-active {
+        display: block;
+        flex-basis: 100%;
+        text-align: center;
+
+      }
+      
+      .menu-toggle-active a {
+        display: block;
+        margin: 5vh 0; /* 메뉴 항목 간격 조정 */
+        transition: all 0.3s; /* 애니메이션 효과 추가 */
+        text-decoration: none; /* 밑줄 제거 */
+        /* 예제 스타일 */
+        transform: translateY(2px); /* 아래로 이동 애니메이션 */
+        color: black;
+      }
+      
+      .menu-toggle-active a:hover {
+        background-color:var(--primary-color);
+        color: var(--palettes-color4); /* 호버시 텍스트 색상 변경 */
+        transform: translateY(0); /* 이동 애니메이션 초기화 */
+        opacity: 70%; /* 투명도 1로 변경 */
+        
+      }
+      
