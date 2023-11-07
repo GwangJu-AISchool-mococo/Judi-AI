@@ -1,0 +1,72 @@
+/* 메인 화면 슬라이드 형태 전환 테스트 */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.image-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+#mainImage {
+    width: 100%;
+    transition: transform 0.4s; /* smooth sliding effect */
+}
+
+
+/* 슬라이드 및 확대 효과 테스트 */
+#image1, #image2 {
+    position: absolute;
+    transition: all 1s; /* Adjust duration as needed */
+}
+
+#image1 {
+    width: 100%;
+    z-index: 1;
+}
+
+#image2 {
+    width: 0;
+    bottom: 0;
+    opacity: 0;
+}
+
+/* textbox 테스트 */
+
+.note-container {
+    position: relative;
+    width: 300px; /* Adjust according to the size of your note image */
+    height: 400px; /* Adjust according to the size of your note image */
+    margin: 50px auto;
+}
+
+.note-container img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.note-container textarea {
+    position: absolute;
+    top: 20%; /* Adjust according to where you want the textbox to appear on the note */
+    left: 10%; /* Adjust according to where you want the textbox to appear on the note */
+    width: 80%; /* Adjust as needed */
+    height: 60%; /* Adjust as needed */
+    padding: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    resize: none; /* Disable resizing of the textarea */
+    font-family: 'Arial', sans-serif; /* Use a handwriting font if available */
+    font-size: 16px;
+    outline: none;
+}
+
+/* Styling the placeholder text */
+.note-container textarea::placeholder {
+    color: #888;
+}
