@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'; //음성 입력용
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate} from 'react-router-dom';
 import './css/reset.css';
 import './css/bottom.css';
@@ -96,9 +95,7 @@ function Home() {
   );
 }
 
-
-// 솔빈 작업 구역
-// 대화 저장을 위한 구역
+// 대화 저장을 위한 부분
 function downloadToFile(content, filename, contentType) {
   const a = document.createElement('a');
   const file = new Blob([content], { type: contentType });
@@ -109,7 +106,7 @@ function downloadToFile(content, filename, contentType) {
 
   URL.revokeObjectURL(a.href);
 };
-// 주디의 대화를 위한 구역
+
 function TryJudiAI() {
   const [isChatboxActive, setIsChatboxActive] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -122,7 +119,7 @@ function TryJudiAI() {
       { text: "안녕하세요, 어떤 도움이 필요하신가요?", sender: 'lawyer' }
     ]);
   }, []);
-  // 채팅 박스 생성 부분
+
   const toggleChatbox = () => {
     setIsChatboxActive(!isChatboxActive);
   };
@@ -133,7 +130,7 @@ function TryJudiAI() {
       // 메시지 상태에 새로운 사용자 메시지 추가
       setMessages([...messages, { text: userInput, sender: 'user' }]);
       setUserInput("");     
-      // TODO: Add logic for lawyer's response 변호사의 답변 로직을 추가하는 부분
+      // TODO: Add logic for lawyer's response
     }
   };
 
@@ -155,23 +152,7 @@ function TryJudiAI() {
     downloadToFile(messagesAsString, 'chat_history.txt', 'text/plain');
   };
 
-  // 음성 인식을 위한 state와 함수들
-  const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
 
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>;
-  }
-
-  // 음성 인식을 시작하는 함수
-  const startListening = () => SpeechRecognition.startListening({ continuous: true });
-  // 음성 인식을 중지하는 함수
-  const stopListening = () => {
-    SpeechRecognition.stopListening();
-    setUserInput(transcript); // 음성 인식 결과를 userInput에 설정
-  };
-
-
-  // 리턴 영역
   return (
     <div>
       {/* Top */}
@@ -192,7 +173,6 @@ function TryJudiAI() {
 
       {/* Chat Simulator */}
       <div className="chat-container">
-        // 주디 이미지
         <div className="lawyer-image-container">
           <img
             className="lawyer-image"
@@ -203,8 +183,7 @@ function TryJudiAI() {
             안녕하세요, 어떤 도움이 필요하신가요?
           </div>
         </div>
-        
-        // 챗 박스 관련 구역
+
         <div id="chatbox" className={`chatbox ${isChatboxActive ? 'active' : 'hidden'}`}>
           {renderMessages}
           <input 
@@ -217,18 +196,7 @@ function TryJudiAI() {
           <button onClick={saveChatHistory}>저장</button>
         </div>
 
-        {/* 음성 인식 컨트롤 버튼을 chatbox 위로 위치시킴 */}
-        <div className="dictaphone-controls">
-          <button onClick={startListening} disabled={listening}>녹음 시작</button>
-          <button onClick={stopListening} disabled={!listening}>녹음 중지</button>
-          <button onClick={resetTranscript}>리셋</button>
-        </div>
-
-        {/* 이 부분을 chatbox 바로 아래에 위치시킬 수 있음 */}
-        {listening && <div className="transcript">Transcript: {transcript}</div>}
-
-        
-        {/* chat 아이콘을 눌렀을 때  chatbox가 열리는 영역 */}
+        {/* Updated to trigger the chatbox */}
         <div id="open-chatbox-button" onClick={toggleChatbox}>
           <img
             src="/images/chat_icon.png"
@@ -236,21 +204,7 @@ function TryJudiAI() {
             style={{ cursor: 'pointer' }} // Makes it clear that the image is clickable
           />
         </div>
-
       </div>
-
-      // 챗 박스 밖으로 이미지 추가해보기
-      <div className = "question-container">
-        <div className="question-form-container">
-            <img
-              src="/images/question_form.png"
-              alt="질문 양식"
-            />
-        </div>
-
-      </div>
-
-      
     </div>
   );
 }

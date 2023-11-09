@@ -1,0 +1,105 @@
+/* 주디 이미지가 담겨있는 박스입니다 */
+.chat-container {
+  width: 400px;
+  margin: auto;
+  background: rgba(44, 133, 184, 0.774);
+  border: 1px solid #6e6a6a;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative; /* Context for absolute positioning */
+}
+
+/* 챗박스 구역입니다 id 로 선언된 애들은 #표기를 한다 */
+#chatbox {
+  position: fixed; /* Fixed position */
+  bottom: 0; /* Align to the bottom */
+  right: 0; /* Align to the right */
+  width: 300px; /* Set a fixed width */
+  height: 500px; /* Set a fixed height */
+  background-color: white; /* Chatbox background */
+  border: 1px solid #ccc; /* Add some border */
+  border-radius: 10px 10px 0 0; /* Rounded corners on the top */
+  z-index: 1000; /* Make sure it's above other items */
+  transition: transform 0.5s ease; /* Smooth transition for moving up/down */
+  transform: translateY(100%); /* Initially hidden below the screen */
+}
+
+#chatbox.active {
+  transform: translateY(0); /* Slide up */
+}
+
+#userInput {
+  width: calc(100% - 60px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-right: -1px; /* Correct alignment with the button */
+}
+
+#sendButton {
+  width: 60px;
+  border: none;
+  padding: 10px;
+  background: #5cb85c;
+  color: white;
+  cursor: pointer; /* It's good practice to indicate that the button is clickable */
+}
+
+/* Bubble styles */
+.bubble {
+  padding: 10px 15px;
+  border-radius: 20px;
+  background: #e0e0e0;
+  display: inline-block;
+  margin: 5px;
+}
+
+/* Lawyer bubble */
+.lawyer {
+  text-align: left;
+}
+
+/* User bubble */
+.user {
+  text-align: right;
+}
+
+.bubble + .bubble {
+  margin-top: 10px;
+}
+
+/* Additional styles after existing styles */
+.lawyer-image-container {
+  position: relative;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.lawyer-image {
+  max-width: 100%;
+  height: auto;
+  display: inline-block; /* Center the image */
+}
+
+.lawyer-bubble {
+  position: absolute;
+  top: 20px; /* Adjust based on the image's top */
+  left: 50%;
+  transform: translateX(-50%); /* Center bubble over the image */
+  white-space: nowrap; /* Prevent bubble text from wrapping */
+}
+
+.hidden {
+  display: none;
+}
+
+.chat-interface {
+  position: relative;
+}
+
+#open-chatbox-button {
+  position: fixed; /* Fixed position */
+  bottom: 20px; /* 20px from the bottom */
+  right: 20px; /* 20px from the right */
+  z-index: 1010; /* Above the chatbox */
+  cursor: pointer; /* Indicate that it's clickable */
+}
