@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate} from 'react-router-dom';
 import './css/reset.css';
@@ -6,7 +5,7 @@ import './css/bottom.css';
 import './css/top.css';
 import './css/center copy.css';
 import './css/styles.css';
-
+import MyComponent from './script';
 
 
 
@@ -34,6 +33,7 @@ function Home() {
     <div>
       {/* Top */}
       <div className="top">
+
         <div className="logo" onClick={() => navigate('/')}>
           <p>JudiAI</p>
         </div>
@@ -90,7 +90,47 @@ function Home() {
  
 
       {/* Bottom */}
-      <div className="bottom"></div>
+      <div className="bottom">      
+  
+        <div className="container-fluid bg-primary text-white-50 py-5 px-sm-3 px-md-5" style={{ marginTop: '90px' }}>
+          <div className="row pt-5">
+            <div className="col-lg-3 col-md-6 mb-5">
+              <a href="#" className="navbar-brand">
+                <h1 className="m-0 mt-n2 text-white display-4">JudiAI</h1>
+              </a>
+              <p>JudiAI는 인공지능 법률 상담 서비스입니다.<br></br>여러분의 상황과 유사한 법률 판례를 분석하고, 대략적인 결과를 제공합니다.</p>
+              {/*              
+              <h6 className="text-uppercase text-white py-2">Follow Us</h6>
+              <div className="d-flex justify-content-start">
+                <a className="btn btn-lg btn-primary btn-lg-square mr-2" href="#"><i className="fab fa-twitter"></i></a>
+                <a className="btn btn-lg btn-primary btn-lg-square mr-2" href="#"><i className="fab fa-facebook-f"></i></a>
+                <a className="btn btn-lg btn-primary btn-lg-square mr-2" href="#"><i className="fab fa-linkedin-in"></i></a>
+                <a className="btn btn-lg btn-primary btn-lg-square" href="#"><i className="fab fa-instagram"></i></a>
+              </div>
+              */}
+            </div>
+            <div className="col-lg-3 col-md-6 mb-5">
+              <h4 className="text-uppercase text-white mb-4">Get In Touch</h4>
+              <p><i className="fa fa-map-marker-alt text-white mr-2"></i>광주광역시 동구 제봉로 92 (대성학원 1-3층)</p>
+              <p><i className="fa fa-phone-alt text-white mr-2"></i>+82 123 4567</p>
+              <p><i className="fa fa-envelope text-white mr-2"></i>mococo@gjaischool.com</p>
+            </div>
+            <div className="col-lg-3 col-md-6 mb-5">
+              <h4 className="text-uppercase text-white mb-4">Quick Links</h4>
+              <div className="d-flex flex-column justify-content-start">
+                <a className="text-white-50 mb-2" href="#"><i className="fa fa-angle-right text-white mr-2"></i>Home</a>
+                <a className="text-white-50 mb-2" onClick={() => navigate('/try-judiai')}><i className="fa fa-angle-right text-white mr-2"></i>Try JudiAI</a>
+                <a className="text-white-50 mb-2" href="#"><i className="fa fa-angle-right text-white mr-2"></i>Our Services</a>
+                <a className="text-white-50 mb-2" href="#"><i className="fa fa-angle-right text-white mr-2"></i>Contact us</a>
+                
+              </div>
+            </div>
+
+          </div>
+        </div>
+  
+      </div>
+
     </div>
   );
 }

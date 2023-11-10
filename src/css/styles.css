@@ -22,14 +22,14 @@
     border: 1px solid #ddd;
     margin-right: -1px; /* 버튼과 정확히 맞추기 위함 */
   }
-  
-  button {
+
+  /* button {
     width: 60px;
     border: none;
     padding: 10px;
     background: #5cb85c;
     color: white;
-  }
+  } */
   
   /* 말풍선 스타일 */
   .bubble {

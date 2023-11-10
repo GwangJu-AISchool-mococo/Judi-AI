@@ -70,8 +70,9 @@
     cursor: pointer;
     padding: 0.25rem 0.75rem;
     font-size: 1.25rem;
-    background-color: transparent;
-    border: 1px solid transparent;
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    color: #000000 !important;
 
 
     /* 다른 아이콘 스타일을 적용하려면 이 부분에 아이콘 스타일을 추가합니다. */
